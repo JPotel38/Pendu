@@ -42,24 +42,133 @@ function Pendu() {
       splitWord = word.split("");
       setWord(splitWord)
       for (var i = 0; i < splitWord.length; i++) {
-        wordToFind.push('_ ');
+        console.log(splitWord[i])
+        switch (splitWord[i]) {
+          case "Ä":
+            splitWord[i] = "A";
+            break;
+          case "À":
+            splitWord[i] = "A";
+            break;
+          case "Â":
+            splitWord[i] = "A";
+            break;
+          case "É":
+            splitWord[i] = "E";
+            break;
+          case "È":
+            splitWord[i] = "E";
+            break;
+          case "Ë":
+            splitWord[i] = "E";
+            break;
+          case "Ê":
+            splitWord[i] = "E";
+            break;
+          case "Ü":
+            splitWord[i] = "U";
+            break;
+          case "Ù":
+            splitWord[i] = "U";
+            break;
+          case "Û":
+            splitWord[i] = "U";
+            break;
+          case "Ú":
+            splitWord[i] = "U";
+            break;
+          case "Ô":
+            splitWord[i] = "O";
+            break;
+          case "Ö":
+            splitWord[i] = "O";
+            break;
+          case "Ï":
+            splitWord[i] = "I";
+            break;
+          default:
+            console.log("Ok");
+        }
+        if (splitWord[i] == "'") {
+          wordToFind.push("'")
+        } else if (splitWord[i] == "-") {
+          wordToFind.push("-")
+        } else {
+          wordToFind.push('_ ');
+        }
         setHidden(wordToFind)
       }
       setValid(true)
     }
   }
 
+
+
   function validLetter() {
-    setTabLetters([...tabLetters, letter + ' ']);
-    var index = word.indexOf(letter)
-    if (index !== -1) {
-      hidden.splice(index, 1, letter);
-      setAddLetter(addLetter + 1);
-    } else {
-      setPoints(points - 1);
-      setAddLetter(addLetter + 1);
+    if (letter == "ä" || letter == "à" || letter == "â") {
+      letter = "a"
     }
-    setLetter('')
+
+    switch (letter) {
+      case "Ä":
+        letter = "A";
+        break;
+      case "À":
+        letter = "A";
+        break;
+      case "Â":
+        letter = "A";
+        break;
+      case "É":
+        letter = "E";
+        break;
+      case "È":
+        letter = "E";
+        break;
+      case "Ë":
+        letter = "E";
+        break;
+      case "Ê":
+        letter = "E";
+        break;
+      case "Ü":
+        letter = "U";
+        break;
+      case "Ù":
+        letter = "U";
+        break;
+      case "Û":
+        letter = "U";
+        break;
+      case "Ú":
+        letter = "U";
+        break;
+      case "Ô":
+        letter = "O";
+        break;
+      case "Ö":
+        letter = "O";
+        break;
+      case "Ï":
+        letter = "I";
+        break;
+      default:
+        console.log("Ok");
+    }
+    if (letter !== '') {
+      setTabLetters([...tabLetters, letter + ' ']);
+      for (var i = 0; i < word.length; i++) {
+        if (word[i].indexOf(letter) == 0) {
+          hidden.splice(i, 1, letter);
+          setAddLetter(addLetter + 1);
+        }
+      }
+      if (word.indexOf(letter) == -1) {
+        setPoints(points - 1);
+        setAddLetter(addLetter + 1)
+      }
+      setLetter('');
+    }
   }
 
   function again() {
