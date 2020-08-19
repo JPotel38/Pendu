@@ -4,7 +4,6 @@ import { Typography, Input, Row, Col, Button, Layout, Modal } from 'antd';
 const { Title } = Typography;
 const { Content } = Layout;
 
-
 function Pendu() {
 
   const [points, setPoints] = useState(10);
@@ -26,14 +25,15 @@ function Pendu() {
         setValid(false);
         setFinish(true);
         alert("Gagné!");
+
       } else if (points == 0) {
         setValid(false);
         setFinish(true);
-        alert("Perdu !");
+        alert("¨Perdu!");
+
       }
     } ifFinish()
   }, [addLetter]);
-
 
   function validWord() {
     if (word.length == 0) {
@@ -177,6 +177,7 @@ function Pendu() {
     setHidden('');
     setWord('');
     setTabLetters([]);
+    setPoints(10);
   }
 
   if (valid == true) {
@@ -202,7 +203,7 @@ function Pendu() {
                 </Col>
               </Row>
               <Row>
-                <Col span={8} offset={8}>
+                <Col span={16} offset={8}>
                   <p style={{ fontSize: 30 }}>Lettres utilisées : {tabLetters}</p>
                 </Col>
               </Row>
@@ -232,7 +233,7 @@ function Pendu() {
             <div className="site-layout-background" style={{ padding: 24, height: "100%" }}>
               <Row>
                 <Col span={16} offset={8}>
-                  <Button className="button" shape="round" target="_blank" style={{ marginTop: 30, fontSize: 30 }} onClick={() => again()}> Recommencer</Button>
+                  <Button className="button" shape="round" target="_blank" style={{ marginTop: 30, fontSize: 30 }} onClick={() => again()}>  Recommencer</Button>
                 </Col>
               </Row>
             </div>
